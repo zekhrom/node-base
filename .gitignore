@@ -1,0 +1,11 @@
+# VISUAL STUDIO CONFIG
+.vs
+
+# LOGS
+*.log
+
+# DEPENDENCIES
+node_modules
+
+# LOCAL ENVIRONMENT VARIABLES
+.env
