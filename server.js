@@ -16,4 +16,8 @@ const taskRoute = require('./routes/taskRoute');
 
 app.use('/v1', taskRoute);
 
-app.listen(process.env.PORT, process.env.HOST);
+app.listen(process.env.PORT, () => {
+    console.log(`App started at ${process.env.PORT}`);
+});
+
+module.exports = { app };

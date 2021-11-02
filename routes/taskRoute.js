@@ -5,7 +5,7 @@ const { Task } = require('../models/taskSchema');
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/task/all', function (req, res) {
+router.get('/tasks', function (req, res) {
     Task.find().then((tasks) => {
         res.send({ tasks });
     }).catch(e => res.status(400).send(e));
@@ -44,7 +44,19 @@ router.patch('/task/:id', function (req, res) {
 });
 
 router.delete('/task/:id', function (req, res) {
+    if (!ObjectID.isValid(req.params.id)) {
+        return res.status(404).send();
+    }
+
     Task.findOneAndRemove({ _id: req.params.id })
+        .then((task) => {
+            if (!task) {
+                return res.status(404).send();
+            }
+            res.send({ task });
+        }).catch((e) => {
+            return res.status(404).send();
+        });
 });
 
 module.exports = router;

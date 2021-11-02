@@ -9,7 +9,7 @@
 **API List:**
 
 **Get all Tasks:** 
-  ```GET:'v1/task/all'  ```
+  ```GET:'v1/tasks'  ```
 
 **Get Task by Id:** 
   ```GET:'v1/task/:id'  ```
@@ -19,6 +19,9 @@
 
 **Update Task:** 
   ```PATCH:'v1/task/:id'  ```
+
+**Delete Task:** 
+  ```DELETE:'v1/task/:id'  ```
   
   *******************************************************************************************
   ## Docker Instructions
