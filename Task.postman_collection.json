@@ -1,0 +1,96 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Task",
+		"_postman_id": "1ed042fe-366e-575e-f4fd-06eb54cccb99",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All tasks",
+			"request": {
+				"url": "http://localhost:49160/v1/tasks",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"let jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"taskId\", jsonData._id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:49160/v1/task",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"ergo proxy\"\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Task by id",
+			"request": {
+				"url": "http://localhost:49160/v1/task/{{taskId}}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update task",
+			"request": {
+				"url": "http://localhost:49160/v1/task/{{taskId}}",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Not a common name\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete task",
+			"request": {
+				"url": "http://localhost:49160/v1/task/{{taskId}}",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
